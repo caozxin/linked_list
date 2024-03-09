@@ -22,9 +22,18 @@ class Solution:
         if not head: # base case
             
             return head
-
+        
+        print(" ", head.val, n)
         self.remove_nth_from_end(head.next, n)
-        print(head.val)
-        num += 1
+        
 
+        while n > 0:
+            n -= 1
+            print(head.val, n)
+        print("n", n)
+        if n == 0:
+            print(head.val, "next step")
+            #remove current node:
+            return
+        
         return head
