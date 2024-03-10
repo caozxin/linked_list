@@ -18,22 +18,26 @@ class Solution:
     """
     def remove_nth_from_end(self, head: ListNode, n: int) -> ListNode:
         # write your code here
+        abs_pos = -n
+        # we need to keep track of the previous node to conduct the deletion: 
 
-        if not head: # base case
-            
-            return head
-        
-        print(" ", head.val, n)
-        self.remove_nth_from_end(head.next, n)
-        
-
-        while n > 0:
+        def traversal(pre_head, head, n, abs_pos):
+            if not head: # base case
+                return head
             n -= 1
-            print(head.val, n)
-        print("n", n)
-        if n == 0:
-            print(head.val, "next step")
-            #remove current node:
-            return
+            # abs_pos -= 1
+            if pre_head: 
+                print(" ", pre_head.val, head.val, n, abs_pos)
+            # self.remove_nth_from_end(head.next, n)
+            traversal(head, head.next, n, abs_pos)
+
+            if n == abs_pos:
+                print("found it!: ", pre_head.val, head.val)
+                #start deleltion of the current node: --> we should change the current head
+                temp = head.next # (head.next = 5)
+                head = pre_head
+                head.next = temp
         
+            return head
+        traversal(None, head, n, abs_pos)
         return head
