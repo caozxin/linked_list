@@ -48,7 +48,7 @@ class Solution:
         return dummy.next
 
     def remove_nth_from_end(self, head: ListNode, n: int) -> ListNode:
-        # Define a dummy node to handle edge cases
+        # Define a dummy node to handle edge cases --> need to further review dummy node method for linked list
         dummy = ListNode(0)
         dummy.next = head
         prev_head = dummy
