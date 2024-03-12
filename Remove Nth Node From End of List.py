@@ -48,7 +48,7 @@ class Solution:
         return dummy.next
 
     def remove_nth_from_end(self, head: ListNode, n: int) -> ListNode:
-        # Define a dummy node to handle edge cases --> need to further review dummy node method for linked list
+        # Define a dummy node to handle edge cases
         dummy = ListNode(0)
         dummy.next = head
         prev_head = dummy
@@ -59,12 +59,15 @@ class Solution:
             prev_head = prev_head.next # this makes prev_head become the previous node of the node to be deleted_node
         # print(first.val)
         # exit()
-        # Move both pointers together until the first pointer reaches the end
+        # Move both pointers together until the first pointer reaches the end. --> this step we move curr_head to the node to be deleted_node
         while prev_head is not None:
             prev_head = prev_head.next
             curr_head = curr_head.next
-        
+        # print("prev_head.val, curr_head.val")
+        # print(prev_head.val, curr_head.val)
+        # print(curr_head.val, curr_head.next.val)
         # Remove the nth node from the end
         curr_head.next = curr_head.next.next
+        # print(curr_head.val, curr_head.next.val)
         
-        return dummy.next
+        return dummy.next # we should return the updated head from dummy.next
