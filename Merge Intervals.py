@@ -27,8 +27,12 @@ class Solution:
         if len(intervals) <= 1: # return if there is only one interval in the list
             return intervals
 
-        print("intervals", intervals)
+        # we need to first pre-process input list of intervals by its start value:
+        def interval_start(each_interval: Interval):
+            return each_interval.start
 
+        intervals.sort(key=interval_start)
+        
         result_list = []
 
         for each in intervals:
