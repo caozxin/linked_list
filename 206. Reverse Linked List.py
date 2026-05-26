@@ -47,3 +47,31 @@ class Solution:
         print("curr_list", curr_list)
 
         return head
+
+
+### update 05/26/26:
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return head
+
+        stack = list()
+        while head:
+            print(head.val)
+            stack.append(head.val)
+            head = head.next
+
+        print(head, stack)
+        head = ListNode(stack.pop()) # we need to initial new head
+        curr = head
+        while stack:
+            curr.next = ListNode(stack.pop())
+            curr = curr.next
+        print(head)
+
+        return head
