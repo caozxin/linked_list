@@ -75,3 +75,23 @@ class Solution:
         print(head)
 
         return head
+
+
+### 05/26/26 better version:
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev = None
+        curr = head
+
+        while curr:
+            nxt = curr.next # placeholder
+            curr.next = prev # main swap
+            prev = curr # clean up afterwards
+            curr = nxt # moving to next
+
+        return prev
