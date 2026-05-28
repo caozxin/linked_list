@@ -71,3 +71,32 @@ class Solution:
         # print(curr_head.val, curr_head.next.val)
         
         return dummy.next # we should return the updated head from dummy.next
+
+
+
+### update 05/28/26:
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        
+        dummy = ListNode(0, head)
+        fast, slow = dummy, dummy
+
+        for _ in range(n):
+            fast = fast.next
+        
+        # print(fast)
+
+        while fast and fast.next:
+            fast = fast.next
+            slow = slow.next
+        # print(slow) # this is the node needs to be removed
+
+        slow.next = slow.next.next # only .next make actual changes, slow or fast are just pointers.
+
+        # print(dummy)
+        return dummy.next
