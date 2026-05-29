@@ -46,7 +46,36 @@ class Solution:
                 prev = prev.next
                 head = head.next
         return True
+### update 05/29/26 my version:
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        slow = head
+        fast = head # because we are not changing the head node, just return true or false
 
+        while fast.next and fast.next.next: # this while loop end until the fast.next.next becomes None
+            slow = slow.next
+            fast = fast.next.next
+
+        second_head = slow.next
+        slow.next = None
+
+        prev = None
+        curr = second_head
+
+        while curr: # this while loop end until the last node of curr becomes None
+            nxt = curr.next # store the next node
+            curr.next = prev
+            prev = curr
+            curr = nxt
+
+        while prev: # this while loop end if either prev or head node becomes None
+            if prev.val != head.val:
+                return False
+            else:
+                prev = prev.next
+                head = head.next
+        return True
+        
 ### update 05/29/26 better version:
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
